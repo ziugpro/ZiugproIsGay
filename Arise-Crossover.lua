@@ -1,14 +1,14 @@
 game.StarterGui:SetCore("SendNotification", {
-    Title = "The Lost One",
+    Title = "Tool Hub",
     Text = "Success Loading",
-    Icon = "rbxthumb://type=Asset&id=93885131404023&w=420&h=420",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
     Duration = 5,
     Callback = function()
     end
 })
 repeat task.wait() until game:IsLoaded()
 
-getgenv().Image = "rbxthumb://type=Asset&id=93885131404023&w=420&h=420"
+getgenv().Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
 getgenv().ToggleUI = "LeftControl"
 
 task.spawn(function()
@@ -40,7 +40,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "The Lost One [ Premium ]",
+    Title = "Tool Hub [ Premium ]",
     SubTitle = "By Ziugpro",
     TabWidth = 130,
     Size = UDim2.fromOffset(505, 355),
@@ -48,6 +48,7 @@ local Window = Fluent:CreateWindow({
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
+
 local Tabs = {
     Local = Window:AddTab({ Title = "Tab Location and Castle", Icon = "" }),
 Event = Window:AddTab({ Title = "Tab Event", Icon = "" }),
