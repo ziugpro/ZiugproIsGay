@@ -1,0 +1,112 @@
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Ui/refs/heads/main/Kaiserhubui", true))()
+
+local Library = DarkraiX:Window("Tool Hub","","",Enum.KeyCode.LeftControl);
+Tab1 = Library:Tab("☃️ General ☃️")
+
+
+Tab1:Seperator("NPC Teleport")
+
+
+Tab1:Button("Teleport To Sell",function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(61.58535385131836, 4.5, 0.4267861545085907)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+
+        local function findChairModel()
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v.Name:lower():find("chair") then
+                    return v
+                end
+            end
+            return nil
+        end
+end)
+Tab1:Button("Teleport To Seed",function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(63.30906295776367, 4.5, -25.5366401672363282)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+
+        local function findChairModel()
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v.Name:lower():find("chair") then
+                    return v
+                end
+            end
+            return nil
+        end
+end)
+Tab1:Button("Teleport To Egg",function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(-258.843994140625, 4.474445819854736, -7.782386779785156)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+
+        local function findChairModel()
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v.Name:lower():find("chair") then
+                    return v
+                end
+            end
+            return nil
+        end
+end)
+Tab1:Button("Teleport To Gear",function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(-262.98443603515625, 4.466918468475342, -30.035324096679688)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+
+        local function findChairModel()
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v.Name:lower():find("chair") then
+                    return v
+                end
+            end
+            return nil
+        end
+end)
+Tab1:Seperator("Main")
+Tab1:Dropdown("Select Plant",{""},function(value)
+end)
+Tab1:Toggle("Auto Plant",false,function(value)
+    end)
+
+Tab1:Toggle("Auto Comlect Plant",false,function(value)
+    end)
+Tab1:Toggle("Auto Submit Moonlit",false,function(value)
+    end)
+Tab1:Toggle("Auto Sell All",false,function(value)
+    end)
+Tab1:Toggle("Auto Sell Mutation",false,function(value)
+    end)
+Tab1:Seperator("Gear")
+Tab1:Dropdown("Select Gear",{""},function(value)
+end)
+Tab1:Toggle("Auto Buy Gear",false,function(value)
+    end)
+Tab1:Seperator("Seed")
+Tab1:Dropdown("Select Seed",{""},function(value)
+end)
+
+Tab1:Toggle("Auto Buy Seed",false,function(value)
+    end)
+Tab1:Seperator("Egg")
+Tab1:Dropdown("Select Egg",{""},function(value)
+end)
+Tab1:Toggle("Auto Buy Egg",false,function(value)
+    end)
+Tab1:Toggle("Auto Collect Egg",false,function(value)
+    end)
+Tab1:Toggle("Auto Create Egg",false,function(value)
+    end)
+Tab1:Line()
