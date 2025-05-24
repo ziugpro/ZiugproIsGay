@@ -21,7 +21,7 @@ local Image = Instance.new("ImageLabel")
 Image.Size = UDim2.new(0, 100, 0, 100)
 Image.Position = UDim2.new(0.5, -50, 0.5, -90)
 Image.BackgroundTransparency = 1
-Image.Image = "rbxthumb://type=Asset&id=91683227610697&w=420&h=420"
+Image.Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
 Image.ZIndex = 2
 Image.Parent = ScreenGui
 
@@ -40,3 +40,15 @@ CenterText.TextSize = 28
 CenterText.TextColor3 = Color3.fromRGB(255, 255, 255)
 CenterText.ZIndex = 2
 CenterText.Parent = ScreenGui
+
+local Bond = Instance.new("TextLabel")
+Bond.AnchorPoint = Vector2.new(0.5, 0.5)
+Bond.Position = UDim2.new(0.5, 0, 0.5, 50)
+Bond.Size = UDim2.new(0, 600, 0, 50)
+Bond.BackgroundTransparency = 1
+Bond.Text = "Bond: 0"
+Bond.Font = Enum.Font.GothamBold
+Bond.TextSize = 28
+Bond.TextColor3 = Color3.fromRGB(255, 255, 255)
+Bond.ZIndex = 2
+Bond.Parent = ScreenGui
