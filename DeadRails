@@ -1,0 +1,42 @@
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "KaitunUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.DisplayOrder = 999999
+ScreenGui.Parent = PlayerGui
+
+local FullBlack = Instance.new("Frame")
+FullBlack.Size = UDim2.new(1, 0, 1, 36) -- +36 để che luôn thanh Roblox
+FullBlack.Position = UDim2.new(0, 0, -0.03, 0)
+FullBlack.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+FullBlack.BorderSizePixel = 0
+FullBlack.ZIndex = 1
+FullBlack.Parent = ScreenGui
+
+local Image = Instance.new("ImageLabel")
+Image.Size = UDim2.new(0, 100, 0, 100)
+Image.Position = UDim2.new(0.5, -50, 0.5, -90)
+Image.BackgroundTransparency = 1
+Image.Image = "rbxthumb://type=Asset&id=91683227610697&w=420&h=420"
+Image.ZIndex = 2
+Image.Parent = ScreenGui
+
+local ImgCorner = Instance.new("UICorner")
+ImgCorner.CornerRadius = UDim.new(1, 0)
+ImgCorner.Parent = Image
+
+local CenterText = Instance.new("TextLabel")
+CenterText.AnchorPoint = Vector2.new(0.5, 0.5)
+CenterText.Position = UDim2.new(0.5, 0, 0.5, 40)
+CenterText.Size = UDim2.new(0, 600, 0, 50)
+CenterText.BackgroundTransparency = 1
+CenterText.Text = "By : Ziugpro - Tool Hub - Version : Auto Bond"
+CenterText.Font = Enum.Font.GothamBold
+CenterText.TextSize = 28
+CenterText.TextColor3 = Color3.fromRGB(255, 255, 255)
+CenterText.ZIndex = 2
+CenterText.Parent = ScreenGui
