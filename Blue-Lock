@@ -1,3 +1,11 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Tool Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
 repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 getgenv().Settings = {
     WalkSpeedToggle = nil,
@@ -72,7 +80,7 @@ local function CreateToggle()
 
     local toggleButton = Instance.new("ImageButton")
     toggleButton.Name = "ToggleButton"
-    toggleButton.Image = "rbxassetid://112196145837803"
+    toggleButton.Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
     toggleButton.ImageTransparency = 0.3
     toggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
     toggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -163,20 +171,18 @@ end
 
 LoadSetting()
 
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/Fearise_UI"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/InterfaceManager.lua"))()
-
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "Fearise Hub" .. " | ".."BlueLock : Rival".." | ".."[Version 3]",
-    SubTitle = "by Rowlet/Blobby",
-    TabWidth = 160,
-    Size =  Device, --UDim2.fromOffset(480, 360), --default size (580, 460)
-    Acrylic = false, -- การเบลออาจตรวจจับได้ การตั้งค่านี้เป็น false จะปิดการเบลอทั้งหมด
-    Theme = "Rose", --Amethyst
-    MinimizeKey = Enum.KeyCode.LeftControl --RightControl
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
-
 local Tabs = {
     --[[ Tabs --]]
     pageLegit = Window:AddTab({ Title = "Legit", Icon = "align-justify" }),
