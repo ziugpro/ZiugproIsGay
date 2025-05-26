@@ -168,8 +168,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/U
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fearise Hub" .. " | ".."BlueLock : Rival".." | ".."[Version 3]",
-    SubTitle = "by Rowlet/Blobby",
+    Title = "Tool Hub" .. " | ".."BlueLock : Rival".." | ".."[Version 3]",
+    SubTitle = "by Ziugpro",
     TabWidth = 160,
     Size =  Device, --UDim2.fromOffset(480, 360), --default size (580, 460)
     Acrylic = false, -- การเบลออาจตรวจจับได้ การตั้งค่านี้เป็น false จะปิดการเบลอทั้งหมด
@@ -2496,7 +2496,7 @@ task.spawn(function()
 end)
 
 Fluent:Notify({
-    Title = "Fearise Hub",
+    Title = "Ziugpro Hub",
     Content = "Anti AFK Is Actived",
     Duration = 5
 })
