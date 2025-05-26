@@ -72,7 +72,7 @@ local function CreateToggle()
 
     local toggleButton = Instance.new("ImageButton")
     toggleButton.Name = "ToggleButton"
-    toggleButton.Image = "rbxassetid://112196145837803"
+    toggleButton.Image = "rbxassetid://76608011467652"
     toggleButton.ImageTransparency = 0.3
     toggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
     toggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -168,8 +168,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/U
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fearise Hub" .. " | ".."BlueLock : Rival".." | ".."[Version 3]",
-    SubTitle = "by Rowlet/Blobby",
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "by Ziugpro",
     TabWidth = 160,
     Size =  Device, --UDim2.fromOffset(480, 360), --default size (580, 460)
     Acrylic = false, -- การเบลออาจตรวจจับได้ การตั้งค่านี้เป็น false จะปิดการเบลอทั้งหมด
