@@ -2502,7 +2502,7 @@ task.spawn(function()
 end)
 
 Fluent:Notify({
-    Title = "Fearise Hub",
+    Title = "Tool Hub",
     Content = "Anti AFK Is Actived",
     Duration = 5
 })
