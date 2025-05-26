@@ -505,6 +505,24 @@ Tabs.Main:AddButton({
 	Title = "Join Dungeon",
 	Description = "",
 	Callback = function()
+			local function callAllRemotes()
+    local searchSpaces = {game:GetService("ReplicatedStorage"), workspace}
+    for _, container in ipairs(searchSpaces) do
+        for _, remote in ipairs(container:GetDescendants()) do
+            if remote:IsA("RemoteEvent") then
+                pcall(function()
+                    remote:FireServer()
+                end)
+            elseif remote:IsA("RemoteFunction") then
+                pcall(function()
+                    remote:InvokeServer()
+                end)
+            end
+        end
+    end
+end
+
+callAllRemotes()
    end
 })
 local ToggleRank = Tabs.Main:AddToggle("ToggleRankq", {Title = "Rank Test", Default = false })
