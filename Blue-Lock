@@ -53,59 +53,6 @@ getgenv().Settings = {
     CardsDropdown = nil,
     LagSwitchToggle = nil,
 }
-
-local function CreateToggle()
-    local toggleGui = Instance.new("ScreenGui")
-    toggleGui.Name = "ToggleGui"
-    toggleGui.DisplayOrder = 1e+04
-    toggleGui.IgnoreGuiInset = true
-    toggleGui.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
-    toggleGui.ResetOnSpawn = false
-    toggleGui.Parent = game:GetService("CoreGui")
-
-    local mainFrame = Instance.new("Frame")
-    mainFrame.Name = "MainFrame"
-    mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    mainFrame.BackgroundTransparency = 1
-    mainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    mainFrame.BorderSizePixel = 0
-    mainFrame.Position = UDim2.fromScale(0.925, 0.116)
-    mainFrame.Size = UDim2.fromScale(0.083, 0.148)
-
-    local uICorner = Instance.new("UICorner")
-    uICorner.Name = "UICorner"
-    uICorner.CornerRadius = UDim.new(1, 0)
-    uICorner.Parent = mainFrame
-
-    local toggleButton = Instance.new("ImageButton")
-    toggleButton.Name = "ToggleButton"
-    toggleButton.Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
-    toggleButton.ImageTransparency = 0.3
-    toggleButton.AnchorPoint = Vector2.new(0.5, 0.5)
-    toggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    toggleButton.BackgroundTransparency = 1
-    toggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    toggleButton.BorderSizePixel = 0
-    toggleButton.Position = UDim2.fromScale(0.491, 0.482)
-    toggleButton.Size = UDim2.fromScale(1, 1)
-
-    local uICorner1 = Instance.new("UICorner")
-    uICorner1.Name = "UICorner"
-    uICorner1.CornerRadius = UDim.new(1, 0)
-    uICorner1.Parent = toggleButton
-
-    toggleButton.Parent = mainFrame
-    local uIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-    uIAspectRatioConstraint.Name = "UIAspectRatioConstraint"
-    uIAspectRatioConstraint.AspectRatio = 1
-    uIAspectRatioConstraint.Parent = mainFrame
-
-    mainFrame.Parent = toggleGui
-
-    return toggleButton
-end
-
 local Device;
 function checkDevice()
     local player = game.Players.LocalPlayer
@@ -2477,16 +2424,6 @@ do
     end
     checkDeviceUi()
 end
-
-SaveManager:SetLibrary(Fluent)
-InterfaceManager:SetLibrary(Fluent)
-
-SaveManager:SetFolder("Fearise Hub")
-InterfaceManager:SetFolder("Fearise Hub")
-
-SaveManager:BuildConfigSection(Tabs.pageSettings)
-InterfaceManager:BuildInterfaceSection(Tabs.pageSettings)
-
 -- Anti AFK
 task.spawn(function()
     while wait(320) do
@@ -2501,10 +2438,30 @@ task.spawn(function()
     end
 end)
 
-Fluent:Notify({
-    Title = "Tool Hub",
-    Content = "Anti AFK Is Actived",
-    Duration = 5
-})
+getgenv().Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
 
-Window:SelectTab(1)
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = false
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
