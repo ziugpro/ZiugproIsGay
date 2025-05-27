@@ -1,7 +1,7 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle-Brand/Turtle-Lib/main/source.lua"))()
-local m = lib:Window("Build An Island")
-local bi = lib:Window("Buy Items")
-local s = lib:Window("Settings")
+local m = lib:Window("Tool Hub")
+local bi = lib:Window("By Ziugpro")
+local s = lib:Window("Premium")
 
 local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
