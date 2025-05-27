@@ -246,5 +246,41 @@ local Toggle = Tabs.Main:AddToggle(
         Callback = function(state)
             autoPlant = state
         end
-    }
-)
+    })
+local Main = Tabs.Main:AddSection("Teleport To NPC")
+Tabs.Main:AddButton({
+    Title = "Teleport To NPC Misc",
+    Description = "",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(-287.1625671386719, 4.435470104217529, -11.827066421508789)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+    end
+})
+Tabs.Main:AddButton({
+    Title = "Teleport To NPC Seed",
+    Description = "",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(87.43911743164062, 4.4898881912231445, -25.5799503326416)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+    end
+})
+Tabs.Main:AddButton({
+    Title = "Teleport To NPC Sell",
+    Description = "",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        local destination = Vector3.new(87.64090728759766, 4.497993469238281, 3.462294340133667)
+        rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
+    end
+})
