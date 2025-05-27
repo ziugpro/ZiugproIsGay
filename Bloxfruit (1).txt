@@ -1,0 +1,623 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Solitute Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Solitute Hub",
+    Text = "Reset Config Script Select Yes Or No",
+    Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
+    Duration = 5,
+    Button1 = "Yes",
+    Button2 = "No",
+    Callback = function()
+    end
+})
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Ui/refs/heads/main/Darkrai%20Ui%20(2).txt", true))()
+
+local Library = DarkraiX:Window("Solitute Hub","","",Enum.KeyCode.LeftControl);
+Setting = Library:Tab("📜 Setting 📜")
+Tab1 = Library:Tab("📜 Gravity 📜")
+Tab2 = Library:Tab("📜 General 📜")
+Tab3 = Library:Tab("📜 Draco v3 📜")
+Race = Library:Tab("📜 Race v4 📜")
+Fruit = Library:Tab("📜 Fruits 📜")
+Teleport = Library:Tab("📜 Teleport 📜")
+Raid = Library:Tab("📜 Raid 📜")
+Shop = Library:Tab("📜 Shop 📜")
+Sea = Library:Tab("📜 Sea Event 📜")
+Item = Library:Tab("📜 Item 📜")
+Melee = Library:Tab("📜 7 Melee 📜")
+Im = Library:Tab("📜 ________ 📜")
+
+Setting:Seperator("⚙️ Setting ⚙️")
+Setting:Toggle("Black Screengui", true, function(value)
+    if value then
+        local blackScreen = Instance.new("Frame")
+        blackScreen.Name = "BlackScreen"
+        blackScreen.Size = UDim2.new(1, 0, 1, 0)
+        blackScreen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        blackScreen.Parent = game:GetService("CoreGui")
+    else
+        local blackScreen = game:GetService("CoreGui"):FindFirstChild("BlackScreen")
+        if blackScreen then
+            blackScreen:Destroy()
+        end
+    end
+end)
+Setting:Toggle("White Screengui", false, function(value)
+    if value then
+        local blackScreen = Instance.new("Frame")
+        blackScreen.Name = "BlackScreen"
+        blackScreen.Size = UDim2.new(1, 0, 1, 0)
+        blackScreen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        blackScreen.Parent = game:GetService("CoreGui")
+    else
+        local blackScreen = game:GetService("CoreGui"):FindFirstChild("BlackScreen")
+        if blackScreen then
+            blackScreen:Destroy()
+        end
+    end
+end)
+Setting:Toggle("Bring Mob", true, function(value)
+end)
+Setting:Toggle("Bypass Tween", false, function(value)
+end)
+Setting:Toggle("Get Quest", true, function(value)
+end)
+Setting:Seperator("📜 Esp 📜")
+Setting:Toggle("Esp Mob", false, function(value)
+end)
+Setting:Toggle("Esp Fruit", false, function(value)
+end)
+Setting:Toggle("Esp Player", false, function(value)
+end)
+Setting:Toggle("Esp Gear", false, function(value)
+end)
+Setting:Line()
+Tab1:Seperator("☄️ Gravity  ☄️")
+Tab1:Toggle("Auto Gravity V2", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab1:Toggle("Auto Farm Mastery", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab1:Seperator("📦 Skill 📦")
+Tab1:Toggle("Skill Z", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab1:Toggle("Skill X", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab1:Toggle("Skill F", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab1:Toggle("Skill V", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab1:Toggle("Skill C", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab1:Seperator("🟢 Mastery 🟢")
+
+
+Tab1:Toggle("Auto Farm Mastery", false, function(value)
+end)
+
+Tab1:Toggle("Use Skill Z", false, function(value)
+end)
+
+Tab1:Toggle("Use Skill X", false, function(value)
+end)
+Tab1:Toggle("Use Skill C", false, function(value)
+end)
+Tab1:Toggle("Use Skill F", false, function(value)
+end)
+
+Tab1:Toggle("Use Skill V", false, function(value)
+end)
+Tab1:Line()
+Tab2:Seperator("📜 Level 📜")
+Tab2:Toggle("Auto Level", false, function(value)
+    _G.AutoFarm = value
+    spawn(function()
+        while _G.AutoFarm do
+            wait(0.1)
+            local closestEnemy, shortestDistance = nil, math.huge
+            for _, enemy in pairs(game.Workspace.Enemies:GetChildren()) do
+                if enemy:FindFirstChild("Humanoid") and enemy:FindFirstChild("HumanoidRootPart") and enemy.Humanoid.Health > 0 then
+                    local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - enemy.HumanoidRootPart.Position).Magnitude
+                    if distance < shortestDistance then
+                        closestEnemy = enemy
+                        shortestDistance = distance
+                    end
+                end
+            end
+
+            if closestEnemy then
+                repeat
+                    wait(0.1)
+                    local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    hrp.CFrame = closestEnemy.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
+
+                    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    if tool then
+                        tool:Activate()
+                    end
+
+                    pcall(function()
+                        closestEnemy.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                        closestEnemy.HumanoidRootPart.Transparency = 1
+                        closestEnemy.Humanoid.JumpPower = 0
+                        closestEnemy.Humanoid.WalkSpeed = 0
+                        closestEnemy.HumanoidRootPart.CanCollide = false
+                    end)
+                until not _G.AutoFarm or not closestEnemy or not closestEnemy.Parent or closestEnemy.Humanoid.Health <= 0
+            end
+        end
+    end)
+end)
+Tab2:Seperator("📦 Boss Sea 1 📦")
+Tab2:Toggle("Auto Farm All Boss", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end) 
+
+Tab2:Seperator("📦 Boss Sea 2 📦")
+Tab2:Toggle("Auto Farm All Boss", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab2:Seperator("📦 Boss Sea 3 📦")
+Tab2:Toggle("Auto Farm All Boss", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Tab2:Line()
+
+Tab3:Seperator("🐉 Draco v1 🐉")
+
+
+Tab3:Toggle("Auto Draco v1", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab3:Seperator("🐉 Draco v2 🐉")
+
+
+Tab3:Toggle("Auto Draco v2", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab3:Seperator("🐉 Draco v3 🐉")
+
+
+Tab3:Toggle("Auto Draco v3", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Tab3:Line()
+
+
+Race:Seperator("📦 Race v4 📦")
+
+
+Race:Toggle("Auto Race v4", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Race:Toggle("Tween Door For Race", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Race:Toggle("Auto Kill Player", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Race:Seperator("👶🏻 Select Player 👶🏻")
+
+Race:Dropdown("Select Player 1", {""}, function(value)
+end)
+Race:Dropdown("Select Player 2", {""}, function(value)
+end)
+Race:Seperator("📦 Race 📦")
+
+
+Race:Toggle("Auto Race v2", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Race:Toggle("Auto Race v3", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Race:Toggle("Auto Get Cyborg", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Race:Toggle("Auto Get Ghool", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Race:Line()
+
+
+Fruit:Seperator("📦 Buy Fruit 📦")
+
+Fruit:Dropdown("Select Fruit", {""}, function(value)
+end)
+Fruit:Toggle("Auto Buy Fruit", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Fruit:Seperator("📦 Random & Fruit 📦")
+
+
+Fruit:Toggle("Auto Store Fruit", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Fruit:Toggle("Auto Find Fruit", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Fruit:Toggle("Auto Find Fruit ( Hop )", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Fruit:Toggle("Auto Random Fruit", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Fruit:Line()
+Raid:Seperator("📦 Raid Fruit 📦")
+Raid:Dropdown("Select Fruit", {""}, function(value)
+end)
+
+Raid:Toggle("Auto Get Fruit 1m", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Raid:Toggle("Auto Buys Chip ( Trade )", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end) 
+
+Raid:Toggle("Auto Buys Chip ( 100.000 Beli )", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Raid:Toggle("Auto Next Island", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Raid:Toggle("Auto Bring Mob", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Raid:Toggle("Auto Farm Raid", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Raid:Toggle("Auto Update Fruit", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Raid:Line()
+
+Sea:Seperator("🌊 Sea Event 🌊")
+
+Sea:Toggle("Auto Farm Sea", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end) 
+
+Sea:Toggle("Auto Buy Boat", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Sea:Seperator("⚙️ Setting ⚙️")
+
+Sea:Toggle("Levithan", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Sea:Toggle("SeaBeast", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Sea:Toggle("Piranha", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Sea:Toggle("Boat Ghost", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Sea:Toggle("Boat", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Sea:Line()
+
+Item:Seperator("⚔️ CDK ⚔️")
+
+Item:Toggle("Auto Yama ", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+
+Item:Toggle("Auto Tushita", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Item:Toggle("Auto CDK", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Item:Seperator("⚔️ TTK ⚔️")
+
+
+Item:Toggle("Auto Saddi", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Item:Toggle("Auto Wando", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Item:Toggle("Auto Shishui", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Item:Toggle("Auto TTK", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+Item:Line()
+
+Melee:Seperator("👊🏻 7 Melee 👊🏻")
+Melee:Toggle("Auto Electric Claw", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Death Step", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Sharkman Karate", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Dragon Talon", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Superhuman", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Godhuman", false, function(value)
+    while value do task.wait(1) end
+end)
+
+Melee:Toggle("Auto Sanguine Art", false, function(value)
+    while value do task.wait(1) end
+end)
+Melee:Line()
+
+Shop:Seperator("👊🏻 Melee 👊🏻")
+Shop:Button("Buy Black Leg", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackleg")
+end)
+
+Shop:Button("Buy Electro", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+end)
+
+Shop:Button("Buy Fishman Karate", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+end)
+
+Shop:Button("Buy Dragon Claw", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "DragonClaw", "1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "DragonClaw", "2")
+end)
+
+Shop:Button("Buy Superhuman", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+end)
+
+Shop:Button("Buy Death Step", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+end)
+
+Shop:Button("Buy Sharkman Karate", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate", true)
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate", true)
+end)
+
+Shop:Button("Buy Electric Claw", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+end)
+
+Shop:Button("Buy Dragon Talon", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+end)
+
+Shop:Button("Buy Godhuman", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+end)
+
+local Mastery = Tabs.Shop:AddSection("Misc Items")
+
+Shop:Button("Refund Stats", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "2")
+end)
+Shop:Seperator("📜 Random Race 📜")
+Shop:Button("Reroll Race", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
+end)
+Shop:Seperator("👊🏻 Haki 👊🏻")
+Shop:Button("Auto Buy Geppo", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Geppo")
+end)
+
+Shop:Button("Auto Buy Buso Haki", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
+end)
+
+Shop:Button("Auto Buy Soru", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Soru")
+end)
+
+Shop:Button("Auto Buy Ken Haki", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
+end)
+Shop:Seperator("😀 Random Bone 😀")
+Shop:Toggle("Auto Random Bone", false, function(value)
+end)
+    
+Shop:Seperator("😀 Open Ui 😀")
+Shop:Button("Devil Shop", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true
+end)
+
+Shop:Button("Color Haki", function()
+    game.Players.LocalPlayer.PlayerGui.Main.Colors.Visible = true
+end)
+
+Shop:Button("Title Name", function()
+    local args = { [1] = "getTitles" }
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    game.Players.LocalPlayer.PlayerGui.Main.Titles.Visible = true
+end)
+
+Shop:Button("Open Awakening", function()
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
+end)
+
+
