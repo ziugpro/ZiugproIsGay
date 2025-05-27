@@ -1,5 +1,5 @@
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Solitute Hub",
+    Title = "Tool Hub",
     Text = "Success Loading",
     Icon = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420",
     Duration = 5,
@@ -7,7 +7,7 @@ game.StarterGui:SetCore("SendNotification", {
     end
 })
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Solitute Hub",
+    Title = "Tool Hub",
     Text = "Reset Config Script Select Yes Or No",
     Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
     Duration = 5,
@@ -48,7 +48,7 @@ end)
 
 local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Ui/refs/heads/main/Darkrai%20Ui%20(2).txt", true))()
 
-local Library = DarkraiX:Window("Solitute Hub","","",Enum.KeyCode.LeftControl);
+local Library = DarkraiX:Window("Tool Hub","","",Enum.KeyCode.LeftControl);
 Setting = Library:Tab("📜 Setting 📜")
 Tab1 = Library:Tab("📜 Gravity 📜")
 Tab2 = Library:Tab("📜 General 📜")
