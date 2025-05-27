@@ -53,6 +53,7 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Tab General", Icon = "" })
+    Sv = Window:AddTab({ Title = "Tab Server", Icon = "" })
 }
 
 local Players = game:GetService("Players")
@@ -284,3 +285,61 @@ Tabs.Main:AddButton({
         rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
     end
 })
+local JobId = ""
+
+local Input = Tabs.Sv:AddInput("Input", {
+    Title = "Job-Id",
+    Default = "",
+    Numeric = false,
+    Finished = true,
+    Placeholder = "",
+    Callback = function(Value)
+        JobId = Value
+    end
+})
+
+Tabs.Sv:AddButton({
+    Title = "Join Server",
+    Description = "",
+    Callback = function()
+        if JobId ~= "" then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, JobId, game.Players.LocalPlayer)
+        end
+    end
+})
+Tabs.Sv:AddButton({
+    Title = "Copy JobId",
+    Description = "",
+    Callback = function()
+        setclipboard(game.JobId)
+    end
+})
+local ServerTimeParagraph = Tabs.Sv:AddParagraph({
+    Title = "Server Time",
+    Content = "00:00:00"
+})
+
+spawn(function()
+    while task.wait(1) do
+        local seconds = math.floor(tick() - game:GetService("Workspace").DistributedGameTime)
+        local total = os.time() - seconds
+        local time = os.date("!%X", os.time() - total)
+        ServerTimeParagraph:SetContent(time)
+    end
+end)
+local JoinTime = os.time()
+
+local PlayerTimeParagraph = Tabs.Sv:AddParagraph({
+    Title = "Your Time Here",
+    Content = "00:00:00"
+})
+
+spawn(function()
+    while task.wait(1) do
+        local elapsed = os.time() - JoinTime
+        local h = math.floor(elapsed / 3600)
+        local m = math.floor((elapsed % 3600) / 60)
+        local s = elapsed % 60
+        PlayerTimeParagraph:SetContent(string.format("%02d:%02d:%02d", h, m, s))
+    end
+end)
