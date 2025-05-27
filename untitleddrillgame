@@ -5,12 +5,10 @@ local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau"))()
 
 local w = Library:CreateWindow{
-    Title = "untitled drill game",
-    SubTitle = "by Bac0nH1ckOff",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(830, 525),
-    Resize = true,
-    MinSize = Vector2.new(470, 380),
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "by Ziugpro",
+    TabWidth = 150,
+    Size = UDim2.fromOffset(500, 365),
     Acrylic = true,
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
