@@ -558,7 +558,7 @@ local teleports = {
     {"BT 10K", CFrame.fromMatrix(Vector3.new(349, 263, -490), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
     {"BT 100K", CFrame.fromMatrix(Vector3.new(1640, 258, 2244), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
     {"BT 1M", CFrame.fromMatrix(Vector3.new(-2307, 976, 1068), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
-    {"BT 10M", CFrame.fromMatrix(Vector3.new(-2024, 714, -1860), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
+    {"BT 10M",
     {"BT 1B", CFrame.fromMatrix(Vector3.new(-254, 286, 980), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
     {"BT 100B", CFrame.fromMatrix(Vector3.new(-271, 281, 991), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))},
     {"BT 10T", CFrame.fromMatrix(Vector3.new(-279, 281, 1007), Vector3.new(1, 0, 0), Vector3.new(0, 1, 0))}
@@ -570,8 +570,8 @@ for i, teleport in pairs(teleports) do
 end
 
 local Window = Fluent:AddWindow({
-    Title = "Z3XHub " .. Version,
-    SubTitle = "by wer4er",
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "by Ziugpro",
     TabWidth = 130,
     Size = UDim2.fromOffset(580, 460),
     Resize = false,
