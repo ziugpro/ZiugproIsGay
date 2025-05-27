@@ -1,8 +1,3 @@
-local token = "SwL2yrmOHoHJyJR1yzsfPH3SMVropqvyEYDmMfWi1k66i7ly1D"
-local url = "https://api.kiettrumhtml.site/premium"
-local http = game:HttpService()
-local res = http:PostAsync(url, "token="..token, Enum.HttpContentType.ApplicationUrlEncoded)
-loadstring(res)()
 game.StarterGui:SetCore("SendNotification", {
     Title = "Tool Hub",
     Text = "Success Loading",
