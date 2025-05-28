@@ -35,25 +35,23 @@ task.spawn(function()
         end)
     end
 end)
-local Library = loadstring(game:HttpGet("https://github.com/1dontgiveaf/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/1dontgiveaf/Fluent/main/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/1dontgiveaf/Fluent/main/Addons/InterfaceManager.lua"))()
 
-
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
     Title = "Tool Hub [ Premium ]",
-    SubTitle = "by Ziugpro",
-    TabWidth = 140,
-    Size = UDim2.fromOffset(500, 365),
-    Acrylic = false,
+    SubTitle = "By Ziugpro",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
-
 local Tabs = {
-    Main = Window:AddTab({ Title = "Tab General", Icon = "" })
-    Sv = Window:AddTab({ Title = "Tab Server", Icon = "" })
+    Main = Window:AddTab({ Title = "Tab General", Icon = "" }),
+    
 }
 
 local Players = game:GetService("Players")
@@ -80,7 +78,7 @@ end
 
 task.spawn(function()
     while task.wait(0.1) do
-        if autoCollect then
+        if _G.autoCollect then
             local plot = getOwnedPlot()
             local farm = plot and plot:FindFirstChild("Important"):FindFirstChild("Plants_Physical")
             if farm then
@@ -194,7 +192,6 @@ task.spawn(function()
         end
     end
 end)
-
 local Toggle = Tabs.Main:AddToggle(
     "AutoCollectToggle",
     {
@@ -247,7 +244,9 @@ local Toggle = Tabs.Main:AddToggle(
         Callback = function(state)
             autoPlant = state
         end
-    })
+    }
+)
+
 local Main = Tabs.Main:AddSection("Teleport To NPC")
 Tabs.Main:AddButton({
     Title = "Teleport To NPC Misc",
@@ -285,9 +284,9 @@ Tabs.Main:AddButton({
         rootPart.CFrame = CFrame.new(destination + Vector3.new(0, 5, 0))
     end
 })
+local Main = Tabs.Main:AddSection("Server")
 local JobId = ""
-
-local Input = Tabs.Sv:AddInput("Input", {
+local Input = Tabs.Main:AddInput("Input", {
     Title = "Job-Id",
     Default = "",
     Numeric = false,
@@ -298,7 +297,7 @@ local Input = Tabs.Sv:AddInput("Input", {
     end
 })
 
-Tabs.Sv:AddButton({
+Tabs.Main:AddButton({
     Title = "Join Server",
     Description = "",
     Callback = function()
@@ -307,39 +306,10 @@ Tabs.Sv:AddButton({
         end
     end
 })
-Tabs.Sv:AddButton({
+Tabs.Main:AddButton({
     Title = "Copy JobId",
     Description = "",
     Callback = function()
         setclipboard(game.JobId)
     end
 })
-local ServerTimeParagraph = Tabs.Sv:AddParagraph({
-    Title = "Server Time",
-    Content = "00:00:00"
-})
-
-spawn(function()
-    while task.wait(1) do
-        local seconds = math.floor(tick() - game:GetService("Workspace").DistributedGameTime)
-        local total = os.time() - seconds
-        local time = os.date("!%X", os.time() - total)
-        ServerTimeParagraph:SetContent(time)
-    end
-end)
-local JoinTime = os.time()
-
-local PlayerTimeParagraph = Tabs.Sv:AddParagraph({
-    Title = "Your Time Here",
-    Content = "00:00:00"
-})
-
-spawn(function()
-    while task.wait(1) do
-        local elapsed = os.time() - JoinTime
-        local h = math.floor(elapsed / 3600)
-        local m = math.floor((elapsed % 3600) / 60)
-        local s = elapsed % 60
-        PlayerTimeParagraph:SetContent(string.format("%02d:%02d:%02d", h, m, s))
-    end
-end)
