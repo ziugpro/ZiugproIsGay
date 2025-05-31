@@ -51,6 +51,7 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Tab General", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
     
 }
 
@@ -313,3 +314,96 @@ Tabs.Main:AddButton({
         setclipboard(game.JobId)
     end
 })
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Tool Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+local seeds = {
+    "Carrot", "Strawberry", "Blueberry", "Orange Tulip", "Tomato", "Corn", "Daffodil",
+    "Watermelon", "Pumpkin", "Apple", "Bamboo", "Coconut", "Cactus", "Dragon Fruit",
+    "Mango", "Grape", "Mushroom", "Pepper", "Cacao", "Beanstalk"
+}
+
+local MultiDropdown = Tabs.Shop:AddDropdown("MultiDropdown", {
+    Title = "Select Seed",
+    Description = "",
+    Values = seeds,
+    Multi = true,
+    Default = {seeds[1]},
+    Callback = function(selected)
+        _G.SelectedSeeds = selected
+    end
+})
+
+local TogglePro = Tabs.Shop:AddToggle("TogglePro", {
+    Title = "Auto Buy Seed",
+    Default = false
+})
+TogglePro:OnChanged(function(Value)
+    _G.TogglePro = Value
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.TogglePro and _G.SelectedSeeds then
+            local player = game.Players.LocalPlayer
+            local shopUI = player:WaitForChild("PlayerGui"):WaitForChild("Seed_Shop")
+            local scroll = shopUI.Frame.ScrollingFrame
+            for _, seedName in pairs(_G.SelectedSeeds) do
+                for _, item in pairs(scroll:GetChildren()) do
+                    if item.Name == seedName then
+                        local stock = item:FindFirstChild("Stock")
+                        if stock and stock.Value > 0 then
+                            game.ReplicatedStorage.GameEvents.BuySeedStock:FireServer(item.Name)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+local gears = {
+    "Watering Can", "Trowel", "Recall Wrench", "Basic Sprinkler", "Advanced Sprinkler",
+    "Godly Sprinkler", "Lightning Rod", "Master Sprinkler", "Favorite Tool", "Harvest Tool",
+    "Star Caller", "Chocolate Sprinkler", "Night Staff"
+}
+
+local MultiGearDropdown = Tabs.Shop:AddDropdown("MultiGearDropdown", {
+    Title = "Select Gear",
+    Description = "",
+    Values = gears,
+    Multi = true,
+    Default = {"Watering Can"},
+    Callback = function(selected)
+        _G.SelectedGears = selected
+    end
+})
+
+local ToggleBuyGear = Tabs.Shop:AddToggle("ToggleBuyGear", {Title = "Auto Buy Gear", Default = false})
+ToggleBuyGear:OnChanged(function(state)
+    _G.ToggleBuyGear = state
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.ToggleBuyGear and _G.SelectedGears and #_G.SelectedGears > 0 then
+            local player = game.Players.LocalPlayer
+            local shopUI = player:WaitForChild("PlayerGui"):WaitForChild("Gear_Shop")
+            local scroll = shopUI.Frame.ScrollingFrame
+            for _, gearName in pairs(_G.SelectedGears) do
+                for _, item in pairs(scroll:GetChildren()) do
+                    if item.Name == gearName then
+                        local stock = item:FindFirstChild("Stock")
+                        if stock and stock.Value > 0 then
+                            game.ReplicatedStorage.GameEvents.BuyGearStock:FireServer(item.Name)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
