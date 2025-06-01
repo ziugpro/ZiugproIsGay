@@ -193,6 +193,33 @@ task.spawn(function()
         end
     end
 end)
+local Main = Tabs.Main:AddSection("Dupe Money")
+local ToggleDupe = Tabs.Main:AddToggle("ToggleDupe", {Title = "Auto Dupe Money", Description = "This Dupe Error If You Can't Dupe It's Because The Game Admin Has Fixed It", Default = false })
+ToggleDupe:OnChanged(function(Value)
+    _G.ToggleDupe = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleDupe then
+repeat task.wait() until game:IsLoaded()
+task.spawn(function()
+    while true do wait()
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v ~= game.Players.LocalPlayer then
+                local Pet = v.Character:FindFirstChildOfClass("Tool")
+                if Pet and Pet:GetAttribute("ItemType") == "Pet" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("SellPet_RE"):FireServer(Pet)
+                end
+            end
+        end
+    end
+end)
+        end
+    end
+end)
+
+local Main = Tabs.Main:AddSection("Farming")
 local Toggle = Tabs.Main:AddToggle(
     "AutoCollectToggle",
     {
