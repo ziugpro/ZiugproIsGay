@@ -79,7 +79,7 @@ local function CreateToggle()
     toggleButton.BackgroundTransparency = 1
     toggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     toggleButton.BorderSizePixel = 0
-    toggleButton.Position = UDim2.fromScale(0.491, 0.482)
+    toggleButton.Position = UDim2.fromScale(9999, 9999)
     toggleButton.Size = UDim2.fromScale(1, 1)
 
     local uICorner1 = Instance.new("UICorner")
@@ -163,18 +163,55 @@ end
 
 LoadSetting()
 
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/Fearise_UI"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/UnlessDahell/FeariseHub/refs/heads/main/InterfaceManager.lua"))()
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Tool Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+repeat task.wait() until game:IsLoaded()
 
+getgenv().Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = false
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "Fearise Hub" .. " | ".."BlueLock : Rival".." | ".."[Version 3]",
-    SubTitle = "by Rowlet/Blobby",
-    TabWidth = 160,
-    Size =  Device, --UDim2.fromOffset(480, 360), --default size (580, 460)
-    Acrylic = false, -- การเบลออาจตรวจจับได้ การตั้งค่านี้เป็น false จะปิดการเบลอทั้งหมด
-    Theme = "Rose", --Amethyst
-    MinimizeKey = Enum.KeyCode.LeftControl --RightControl
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 local Tabs = {
