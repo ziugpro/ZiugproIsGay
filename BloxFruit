@@ -6,49 +6,8 @@ game.StarterGui:SetCore("SendNotification", {
     Callback = function()
     end
 })
-game.StarterGui:SetCore("SendNotification", {
-    Title = "Tool Hub",
-    Text = "Reset Config Script Select Yes Or No",
-    Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
-    Duration = 5,
-    Button1 = "Yes",
-    Button2 = "No",
-    Callback = function()
-    end
-})
-repeat task.wait() until game:IsLoaded()
-
-getgenv().Image = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420"
-getgenv().ToggleUI = "LeftControl"
-
-task.spawn(function()
-    if not getgenv().LoadedMobileUI then
-        getgenv().LoadedMobileUI = true
-        local OpenUI = Instance.new("ScreenGui")
-        local ImageButton = Instance.new("ImageButton")
-        local UICorner = Instance.new("UICorner")
-        OpenUI.Name = "OpenUI"
-        OpenUI.Parent = game:GetService("CoreGui")
-        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-        ImageButton.Parent = OpenUI
-        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
-        ImageButton.BackgroundTransparency = 0.8
-        ImageButton.Position = UDim2.new(0, 5, 0, 5)
-        ImageButton.Size = UDim2.new(0, 55, 0, 55)
-        ImageButton.Image = getgenv().Image
-        ImageButton.Draggable = true
-        ImageButton.Transparency = 1
-        UICorner.CornerRadius = UDim.new(100)
-        UICorner.Parent = ImageButton
-        ImageButton.MouseButton1Click:Connect(function()
-            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
-        end)
-    end
-end)
-
-local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Ui/refs/heads/main/Darkrai%20Ui%20(2).txt", true))()
-
-local Library = DarkraiX:Window("Tool Hub","","",Enum.KeyCode.LeftControl);
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ziugpro/Ui/refs/heads/main/UiLib", true))()
+local Library = DarkraiX:Window("Tool Hub","","rbxthumb://type=Asset&id=76608011467652&w=420&h=420",Enum.KeyCode.RightControl);
 Setting = Library:Tab("📜 Setting 📜")
 Tab1 = Library:Tab("📜 Gravity 📜")
 Tab2 = Library:Tab("📜 General 📜")
