@@ -2532,10 +2532,4 @@ task.spawn(function()
     end
 end)
 
-Fluent:Notify({
-    Title = "Fearise Hub",
-    Content = "Anti AFK Is Actived",
-    Duration = 5
-})
-
 Window:SelectTab(1)
