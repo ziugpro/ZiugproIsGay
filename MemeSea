@@ -1,0 +1,460 @@
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ziugpro/Ui/refs/heads/main/UiLib", true))()
+local Library = DarkraiX:Window("Tool Hub","","rbxthumb://type=Asset&id=76608011467652&w=420&h=420",Enum.KeyCode.RightControl);
+Tab1 = Library:Tab("⏲️ Get Item ⏲️")
+
+Tab1:Seperator("Level")
+Tab1:Toggle("Auto Farm Level",false,function(value)
+    end)
+Tab1:Seperator("Item Sword")
+Tab1:Toggle("Auto Yoru", false, function(value)
+    _G.ToggleMove = value
+
+    if value then
+        spawn(function()
+            local TweenService = game:GetService("TweenService")
+            local UserInputService = game:GetService("UserInputService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local hrp = character:WaitForChild("HumanoidRootPart")
+            local mouse = player:GetMouse()
+
+            local positions = {
+                Vector3.new(2890.414306640625, -51.56565856933594, 4207.4951171875),
+            }
+
+            local function pressE()
+                UserInputService:SetKeyDown(Enum.KeyCode.E)
+                task.wait(0.1)
+                UserInputService:SetKeyUp(Enum.KeyCode.E)
+            end
+
+            local function getNearestMob()
+                local mobsFolder = workspace:FindFirstChild("Mobs") or workspace
+                local nearestMob = nil
+                local nearestDist = math.huge
+                for _, mob in pairs(mobsFolder:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 and mob:FindFirstChild("HumanoidRootPart") then
+                        local dist = (hrp.Position - mob.HumanoidRootPart.Position).Magnitude
+                        if dist < nearestDist then
+                            nearestDist = dist
+                            nearestMob = mob
+                        end
+                    end
+                end
+                return nearestMob
+            end
+
+            local pressedE = false
+
+            while _G.ToggleMove do
+                for _, pos in ipairs(positions) do
+                    if not _G.ToggleMove then break end
+                    local distance = (hrp.Position - pos).Magnitude
+                    local time = distance / 300
+                    local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                    tween:Play()
+                    tween.Completed:Wait()
+
+                    if not _G.ToggleMove then break end
+                    if not pressedE then
+                        pressE()
+                        pressedE = true
+                    end
+
+                    if not _G.ToggleMove then break end
+                    local mob = getNearestMob()
+                    if mob then
+                        local mobPos = mob.HumanoidRootPart.Position
+                        local distToMob = (hrp.Position - mobPos).Magnitude
+                        local timeToMob = distToMob / 300
+                        local tweenToMob = TweenService:Create(hrp, TweenInfo.new(timeToMob, Enum.EasingStyle.Linear), {CFrame = CFrame.new(mobPos)})
+                        tweenToMob:Play()
+                        tweenToMob.Completed:Wait()
+
+                        if not _G.ToggleMove then break end
+                        local backpack = player:WaitForChild("Backpack")
+                        local weapon = nil
+                        for _, item in pairs(backpack:GetChildren()) do
+                            if item:IsA("Tool") then
+                                weapon = item
+                                break
+                            end
+                        end
+                        if weapon then
+                            player.Character.Humanoid:EquipTool(weapon)
+                        end
+
+                        while _G.ToggleMove and mob and mob.Humanoid and mob.Humanoid.Health > 0 do
+                            mouse1click()
+                            task.wait(1)
+                        end
+                    end
+
+                    if not _G.ToggleMove then break end
+                    task.wait(10)
+                end
+                pressedE = false
+            end
+        end)
+    end
+end)
+Tab1:Toggle("Auto Sus Sword", false, function(value)
+    _G.ToggleSus = value
+
+    if value then
+        spawn(function()
+            local TweenService = game:GetService("TweenService")
+            local UserInputService = game:GetService("UserInputService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local hrp = character:WaitForChild("HumanoidRootPart")
+            local mouse = player:GetMouse()
+
+            local positions = {
+                Vector3.new(6565.0048828125, -94.5643081665039, 4794.93798828125),
+            }
+
+            local function pressE()
+                UserInputService:SetKeyDown(Enum.KeyCode.E)
+                task.wait(0.1)
+                UserInputService:SetKeyUp(Enum.KeyCode.E)
+            end
+
+            local function getNearestMob()
+                local mobsFolder = workspace:FindFirstChild("Mobs") or workspace
+                local nearestMob = nil
+                local nearestDist = math.huge
+                for _, mob in pairs(mobsFolder:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 and mob:FindFirstChild("HumanoidRootPart") then
+                        local dist = (hrp.Position - mob.HumanoidRootPart.Position).Magnitude
+                        if dist < nearestDist then
+                            nearestDist = dist
+                            nearestMob = mob
+                        end
+                    end
+                end
+                return nearestMob
+            end
+
+            local pressedE = false
+
+            while _G.ToggleSus do
+                for _, pos in ipairs(positions) do
+                    if not _G.ToggleSus then break end
+                    local distance = (hrp.Position - pos).Magnitude
+                    local time = distance / 300
+                    local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                    tween:Play()
+                    tween.Completed:Wait()
+
+                    if not _G.ToggleSus then break end
+                    if not pressedE then
+                        pressE()
+                        pressedE = true
+                    end
+
+                    if not _G.ToggleSus then break end
+                    local mob = getNearestMob()
+                    if mob then
+                        local mobPos = mob.HumanoidRootPart.Position
+                        local distToMob = (hrp.Position - mobPos).Magnitude
+                        local timeToMob = distToMob / 300
+                        local tweenToMob = TweenService:Create(hrp, TweenInfo.new(timeToMob, Enum.EasingStyle.Linear), {CFrame = CFrame.new(mobPos)})
+                        tweenToMob:Play()
+                        tweenToMob.Completed:Wait()
+
+                        if not _G.ToggleSus then break end
+                        local backpack = player:WaitForChild("Backpack")
+                        local weapon = nil
+                        for _, item in pairs(backpack:GetChildren()) do
+                            if item:IsA("Tool") then
+                                weapon = item
+                                break
+                            end
+                        end
+                        if weapon then
+                            player.Character.Humanoid:EquipTool(weapon)
+                        end
+
+                        while _G.ToggleSus and mob and mob.Humanoid and mob.Humanoid.Health > 0 do
+                            mouse1click()
+                            task.wait(1)
+                        end
+                    end
+
+                    if not _G.ToggleSus then break end
+                    task.wait(10)
+                end
+                pressedE = false
+            end
+        end)
+    end
+end)
+Tab1:Seperator("Boss Farming")
+
+Tab1:Toggle("Auto Farm Moai", false, function(value)
+    _G.ToggleMoai = value
+
+    if value then
+        spawn(function()
+            local TweenService = game:GetService("TweenService")
+            local UserInputService = game:GetService("UserInputService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local hrp = character:WaitForChild("HumanoidRootPart")
+            local mouse = player:GetMouse()
+
+            local positions = {
+                Vector3.new(-2661.57763671875, -80.86116790771484, 3379.0107421875),
+            }
+
+            local function pressE()
+                UserInputService:SetKeyDown(Enum.KeyCode.E)
+                task.wait(0.1)
+                UserInputService:SetKeyUp(Enum.KeyCode.E)
+            end
+
+            local function getMoaiMob()
+                local mobsFolder = workspace:FindFirstChild("Mobs") or workspace
+                for _, mob in pairs(mobsFolder:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") then
+                        if string.lower(mob.Name):find("moai") then
+                            return mob
+                        end
+                    end
+                end
+                return nil
+            end
+
+            local pressedE = false
+
+            while _G.ToggleMoai do
+                for _, pos in ipairs(positions) do
+                    if not _G.ToggleMoai then break end
+                    local distance = (hrp.Position - pos).Magnitude
+                    local time = distance / 300
+                    local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                    tween:Play()
+                    tween.Completed:Wait()
+
+                    if not _G.ToggleMoai then break end
+                    if not pressedE then
+                        pressE()
+                        pressedE = true
+                    end
+
+                    if not _G.ToggleMoai then break end
+                    local mob = getMoaiMob()
+                    if mob then
+                        local mobPos = mob.HumanoidRootPart.Position
+                        local distToMob = (hrp.Position - mobPos).Magnitude
+                        local timeToMob = distToMob / 300
+                        local tweenToMob = TweenService:Create(hrp, TweenInfo.new(timeToMob, Enum.EasingStyle.Linear), {CFrame = CFrame.new(mobPos)})
+                        tweenToMob:Play()
+                        tweenToMob.Completed:Wait()
+
+                        if not _G.ToggleMoai then break end
+                        local backpack = player:WaitForChild("Backpack")
+                        local weapon = nil
+                        for _, item in pairs(backpack:GetChildren()) do
+                            if item:IsA("Tool") then
+                                weapon = item
+                                break
+                            end
+                        end
+                        if weapon then
+                            player.Character.Humanoid:EquipTool(weapon)
+                        end
+
+                        while _G.ToggleMoai and mob and mob.Humanoid and mob.Humanoid.Health > 0 do
+                            mouse1click()
+                            task.wait(1)
+                        end
+                    end
+
+                    if not _G.ToggleMoai then break end
+                    task.wait(10)
+                end
+                pressedE = false
+            end
+        end)
+    end
+end)
+Tab1:Toggle("Auto Farm Pumking", false, function(value)
+    _G.TogglePumking = value
+
+    if value then
+        spawn(function()
+            local TweenService = game:GetService("TweenService")
+            local UserInputService = game:GetService("UserInputService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local hrp = character:WaitForChild("HumanoidRootPart")
+            local mouse = player:GetMouse()
+
+            local positions = {
+                Vector3.new(-1163.67333984375, -92.68782043457031, 1461.1556396484375),
+            }
+
+            local function pressE()
+                UserInputService:SetKeyDown(Enum.KeyCode.E)
+                task.wait(0.1)
+                UserInputService:SetKeyUp(Enum.KeyCode.E)
+            end
+
+            local function getPumkingMob()
+                local mobsFolder = workspace:FindFirstChild("Mobs") or workspace
+                for _, mob in pairs(mobsFolder:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") then
+                        if string.lower(mob.Name):find("pumking") then
+                            return mob
+                        end
+                    end
+                end
+                return nil
+            end
+
+            local pressedE = false
+
+            while _G.TogglePumking do
+                for _, pos in ipairs(positions) do
+                    if not _G.TogglePumking then break end
+                    local distance = (hrp.Position - pos).Magnitude
+                    local time = distance / 300
+                    local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                    tween:Play()
+                    tween.Completed:Wait()
+
+                    if not _G.TogglePumking then break end
+                    if not pressedE then
+                        pressE()
+                        pressedE = true
+                    end
+
+                    if not _G.TogglePumking then break end
+                    local mob = getPumkingMob()
+                    if mob then
+                        local mobPos = mob.HumanoidRootPart.Position
+                        local distToMob = (hrp.Position - mobPos).Magnitude
+                        local timeToMob = distToMob / 300
+                        local tweenToMob = TweenService:Create(hrp, TweenInfo.new(timeToMob, Enum.EasingStyle.Linear), {CFrame = CFrame.new(mobPos)})
+                        tweenToMob:Play()
+                        tweenToMob.Completed:Wait()
+
+                        if not _G.TogglePumking then break end
+                        local backpack = player:WaitForChild("Backpack")
+                        local weapon = nil
+                        for _, item in pairs(backpack:GetChildren()) do
+                            if item:IsA("Tool") then
+                                weapon = item
+                                break
+                            end
+                        end
+                        if weapon then
+                            player.Character.Humanoid:EquipTool(weapon)
+                        end
+
+                        while _G.TogglePumking and mob and mob.Humanoid and mob.Humanoid.Health > 0 do
+                            mouse1click()
+                            task.wait(1)
+                        end
+                    end
+
+                    if not _G.TogglePumking then break end
+                    task.wait(10)
+                end
+                pressedE = false
+            end
+        end)
+    end
+end)
+Tab1:Seperator("Raid")
+Tab1:Toggle("Auto Farm Raid", false, function(value)
+    _G.ToggleRaid = value
+
+    if value then
+        spawn(function()
+            local TweenService = game:GetService("TweenService")
+            local player = game.Players.LocalPlayer
+            local character = player.Character or player.CharacterAdded:Wait()
+            local hrp = character:WaitForChild("HumanoidRootPart")
+            local mouse = player:GetMouse()
+
+            local fixedPos = Vector3.new(2748.0478515625, -57.0989875793457, -4521.5927734375)
+
+            local function getClosestMob()
+                local mobsFolder = workspace:FindFirstChild("Mobs") or workspace
+                local closestMob = nil
+                local shortestDist = math.huge
+                for _, mob in pairs(mobsFolder:GetChildren()) do
+                    if mob:IsA("Model") and mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") then
+                        local dist = (hrp.Position - mob.HumanoidRootPart.Position).Magnitude
+                        if dist < shortestDist then
+                            shortestDist = dist
+                            closestMob = mob
+                        end
+                    end
+                end
+                return closestMob
+            end
+
+            while _G.ToggleRaid do
+                local dist = (hrp.Position - fixedPos).Magnitude
+                local time = dist / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(fixedPos)})
+                tween:Play()
+                tween.Completed:Wait()
+
+                if not _G.ToggleRaid then break end
+
+                task.wait(11)
+
+                if not _G.ToggleRaid then break end
+
+                local mob = getClosestMob()
+                if mob and mob:FindFirstChild("HumanoidRootPart") then
+                    hrp.CFrame = mob.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0)
+
+                    local backpack = player:WaitForChild("Backpack")
+                    local weapon = nil
+                    for _, item in pairs(backpack:GetChildren()) do
+                        if item:IsA("Tool") then
+                            weapon = item
+                            break
+                        end
+                    end
+                    if weapon then
+                        player.Character.Humanoid:EquipTool(weapon)
+                    end
+
+                    while _G.ToggleRaid and mob and mob.Humanoid and mob.Humanoid.Health > 0 do
+                        mouse1click()
+                        task.wait(1)
+                    end
+                end
+
+                if not _G.ToggleRaid then break end
+
+                task.wait(1)
+            end
+        end)
+    end
+end)
+Tab1:Seperator("Setting")
+Tab1:Toggle("Get Quest", false, function(value)
+    _G.ToggleE = value
+    if value then
+        task.spawn(function()
+            while _G.ToggleE do
+                task.defer(function()
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(false, "E", false, game)
+                end)
+                task.wait()
+            end
+        end)
+    end
+end)
+Tab1:Toggle("Bring Mob", true, function(value)
+end)
+Tab1:Line()
