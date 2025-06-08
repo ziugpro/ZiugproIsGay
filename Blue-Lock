@@ -2509,23 +2509,7 @@ do
     end
     checkDeviceUi()
 end
-local Antiban = Tabs.Ban:AddToggle("Antiban", {Title = "Antiban", Default = true })
-Antiban:OnChanged(function(Value)
-    _G.Antiban = Value
-    if Value then
-        for _, v in pairs(game:GetDescendants()) do
-    if v:IsA("LocalScript") or v:IsA("ModuleScript") or v:IsA("Script") then
-        local n = v.Name:lower()
-        local p = v:GetFullName():lower()
 
-        if n:find("anti") or n:find("cheat") or n:find("ac") or n:find("ban") or n:find("kick") or
-           p:find("anticheat") or p:find("kick") or p:find("detector") or p:find("security") then
-            pcall(function() v:Destroy() end)
-            print("🔥 Đã xóa nghi vấn:", v:GetFullName())
-        end
-    end
-end    end
-end)
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 
@@ -2535,7 +2519,20 @@ InterfaceManager:SetFolder("Fearise Hub")
 SaveManager:BuildConfigSection(Tabs.pageSettings)
 InterfaceManager:BuildInterfaceSection(Tabs.pageSettings)
 
--- Anti AFK
+task.spawn(function()
+for _, v in pairs(game:GetDescendants()) do
+    if v:IsA("LocalScript") or v:IsA("ModuleScript") or v:IsA("Script") then
+        local n = v.Name:lower()
+        local p = v:GetFullName():lower()
+
+        if n:find("anti") or n:find("cheat") or n:find("ac") or n:find("ban") or n:find("kick") or
+           p:find("anticheat") or p:find("kick") or p:find("detector") or p:find("security") then
+            pcall(function() v:Destroy() end)
+            print("🔥 Suspicion cleared:", v:GetFullName())
+        end
+    end
+end
+end)
 task.spawn(function()
     while wait(320) do
         pcall(function()
