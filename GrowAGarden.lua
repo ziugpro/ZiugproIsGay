@@ -962,10 +962,10 @@ end
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Grow a Garden | RzkyO",
+   Name = "Tool Hub",
    Icon = 0,
    LoadingTitle = "Grow a Garden OP",
-   LoadingSubtitle = "by RzkyO",
+   LoadingSubtitle = "by Ziugpro",
    Theme = "default",
 
    DisableRayfieldPrompts = false,
