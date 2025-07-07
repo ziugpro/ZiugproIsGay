@@ -68,7 +68,7 @@ Tabs.Main:AddSlider("Slider", {
 
 Tabs.Main:AddDropdown("Dropdown", {
     Title = "Select Fruit To Fake",
-    Values = {"None", "Candy Blossom", "Moon Mango", "Sugar Apple", "Sunflower", "Blood Banana"},
+    Values = {"None", "Candy Blossom", "Moon Mango", "Sugar Apple", "Sunflower", "Blood Banana", "Bambo", "Beanstalk", "Ember Lily"},
     Multi = false,
     Default = 1,
     Callback = function(Value)
@@ -103,7 +103,7 @@ Tabs.Main:AddSlider("SeedAmount", {
 
 Tabs.Main:AddDropdown("SeedType", {
     Title = "Seed Type",
-    Values = {"None", "Sunflower Seed", "Moon Mango Seed", "Candy Blossom Seed", "Moon Blossom Seed"},
+    Values = {"None", "Sunflower Seed", "Moon Mango Seed", "Candy Blossom Seed", "Moon Blossom Seed", "Beanstalk Seed", "Ember Lily Sees", "Moon Melon Seed"},
     Multi = false,
     Default = 1,
     Callback = function(Value)
@@ -150,7 +150,7 @@ Tabs.Main:AddSlider("PetWeight", {
 
 Tabs.Main:AddDropdown("PetType", {
     Title = "Pet Type",
-    Values = {"None", "Disco Bee", "Dragonfly", "Raccoon", "Rex Fox"},
+    Values = {"None", "Disco Bee", "Dragonfly", "Raccoon", "Rex Fox", "Queen Bee", "Toucan", "Stegosaurus", "Mimic Octopus", "T-Rex", "Fennec Fox"},
     Multi = false,
     Default = 1,
     Callback = function(Value)
