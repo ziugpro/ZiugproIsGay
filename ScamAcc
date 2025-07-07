@@ -1,0 +1,173 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Tool Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
+    Duration = 5,
+    Callback = function() end
+})
+
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Tab Fake", Icon = "" }),
+}
+
+Tabs.Main:AddSlider("Slider", {
+    Title = "Fake Kg Fruit",
+    Description = "",
+    Default = 20,
+    Min = 0.1,
+    Max = 10000,
+    Rounding = 1,
+    Callback = function(Value)
+        getgenv().selectedWeight = Value
+    end
+})
+
+Tabs.Main:AddDropdown("Dropdown", {
+    Title = "Select Fruit To Fake",
+    Values = {"None", "Candy Blossom", "Moon Mango", "Sugar Apple", "Sunflower", "Blood Banana"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        getgenv().selectedFruit = Value
+    end
+})
+
+Tabs.Main:AddButton({
+    Title = "Create Fruit",
+    Description = "",
+    Callback = function()
+        local fruitName = getgenv().selectedFruit or "Unknown Fruit"
+        local weight = getgenv().selectedWeight or 0
+        local tool = Instance.new("Tool")
+        tool.Name = fruitName .. " [" .. string.format("%.1f", weight) .. "kg]"
+        tool.RequiresHandle = false
+        tool.Parent = game:GetService("Players").LocalPlayer.Backpack
+    end
+})
+
+Tabs.Main:AddSlider("SeedAmount", {
+    Title = "Amount",
+    Description = "Amount of Seed (Xn)",
+    Default = 2,
+    Min = 1,
+    Max = 100,
+    Rounding = 0,
+    Callback = function(Value)
+        getgenv().SeedAmount = Value
+    end
+})
+
+Tabs.Main:AddDropdown("SeedType", {
+    Title = "Seed Type",
+    Values = {"None", "Sunflower Seed", "Moon Mango Seed", "Candy Blossom Seed", "Moon Blossom Seed"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        getgenv().SeedType = Value
+    end
+})
+
+Tabs.Main:AddButton({
+    Title = "Create Seed",
+    Description = "",
+    Callback = function()
+        local seedName = getgenv().SeedType or "Unknown Seed"
+        local amount = getgenv().SeedAmount or 1
+        local tool = Instance.new("Tool")
+        tool.Name = seedName .. " [X" .. tostring(amount) .. "]"
+        tool.RequiresHandle = false
+        tool.Parent = game:GetService("Players").LocalPlayer.Backpack
+    end
+})
+
+Tabs.Main:AddSlider("PetAge", {
+    Title = "Age",
+    Description = "Pet Age (Years)",
+    Default = 1,
+    Min = 1,
+    Max = 100,
+    Rounding = 0,
+    Callback = function(Value)
+        getgenv().PetAge = Value
+    end
+})
+
+Tabs.Main:AddSlider("PetWeight", {
+    Title = "Weight",
+    Description = "Pet Weight (kg)",
+    Default = 1,
+    Min = 0,
+    Max = 500,
+    Rounding = 1,
+    Callback = function(Value)
+        getgenv().PetWeight = Value
+    end
+})
+
+Tabs.Main:AddDropdown("PetType", {
+    Title = "Pet Type",
+    Values = {"None", "Disco Bee", "Dragonfly", "Raccoon", "Rex Fox"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        getgenv().PetType = Value
+    end
+})
+
+Tabs.Main:AddButton({
+    Title = "Create Pet",
+    Description = "",
+    Callback = function()
+        local petName = getgenv().PetType or "UnknownPet"
+        local age = getgenv().PetAge or 1
+        local weight = getgenv().PetWeight or 0
+        local tool = Instance.new("Tool")
+        tool.Name = petName .. " [" .. string.format("%.1f", weight) .. "kg] [Age " .. tostring(age) .. "]"
+        tool.RequiresHandle = false
+        tool.Parent = game:GetService("Players").LocalPlayer.Backpack
+    end
+})
